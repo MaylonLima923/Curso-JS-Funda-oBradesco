@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title> Salário - aninhamento if </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8"/>   
+    </head>
+
+    <body>
+
+        <script language="JavaScript">
+            
+
+            /* Objetivo: Calcular o salário líquido de um funcionário que trabalha por hora (horista).
+            - Para desenvolver o cálculo é necessário ter as seguintes informações:
+            - Quantidade de horas trabalhadas no mês (js_qht)
+            - Valor da hora de trabalho (js_vht)
+            - Percentual de desconto do INSS (js_inss)
+            - Informar a classificação Salarial
+            - Objetos/Métodos utilizados:
+            entrada: window.prompt
+            saída: document.write
+            */
+
+            /* Definição de variaveis */
+
+            var qht; //var de entrada: Quantidade de horas trabalhadas
+            var vht; //var de entrada: Valor da hora de trabalho
+            var inss; // var de entrada: Percentual de desconto inss
+            var tdes; // var de saída: Total de desconto
+            var sb; // Var de saída: Salário Bruto
+            var sl; // Var de saída: Salário Líquido
+
+            /* Entrada de dados */
+
+            qht = parseFloat(window.prompt('Informe a quantidade de horas mensais trabalhadas (135-180)' , '00'))
+            vht = parseFloat(window.prompt('Informe o valor da hora de trabalho (25 a 50)' , '00'))
+            inss=parseFloat(window.prompt('Informe o percentual de Desconto do INSS (5 a 15)' , '00'))
+
+            /* Processamento */
+
+            sb= qht * vht
+            tdes = (inss/100) * sb
+            sl = sb - tdes
+
+            /* Saída de Dados */
+
+            document.write('<p><b> DEMONSTRATIVO PARA CALCULO DO SALÁRIO LÍQUIDO</b>');
+
+            document.write('<p>Quantidade de horas trabalhadas (135 a 180) => <b> ' + qht + '</b>');
+            if (qht>180) {
+                document.write('...<b>Valor máximo excedido</b>');
+            }
+            if (qht<135) {
+                document.write('...<b>Valor mínimo inválido</b>');
+            }
+
+            document.write ('<p>Valor da hora trabalhada (25 a 50) => <b>' + vht + '</b>');
+            if (vht>50) {
+                document.write('...<b>Valor máximo excedido </b>');
+            }
+            if (vht<25) {
+                document.write('...<b>Valor mínimo inválido</b>');
+            }
+
+            document.write('<p>Valor de Desconto do INSS (5 a 15) => <b>' + inss + '</b>');
+            if (inss>15) {
+                document.write('...<b>Valor máximo excedido </b>');
+            }
+            if (inss<5) {
+                document.write('...<b>Valor mínimo inválido </b>');
+            }
+
+            document.write ('<p>==========================================================');
+
+            document.write('<p><b>Salário bruto= </b>' + sb );
+            document.write('<p><b>Total de desconto INSS= </b>' + tdes );
+            document.write('<p><b>Salário líquido= </b>' + sl );
+
+            /* Saída de dados com aninhamento de if*/
+
+            if (sl>10500) {
+                document.write('...<b>Salário Elevado! </b> maior que 10500');
+            }
+            else {
+                if (sl>6500) {
+                    document.write('...<b>Salário Satisfatório</b> maior que 6500');
+                }
+                else {
+                    if (sl>3000) {
+                        document.write('...<b>Salário moderado </b> maior que 3000');
+                    }
+                    
+                    else {
+                        document.write ('...<b>Salário Insatisfatório </b>menor ou igual a 3000')
+                    }                    
+                }
+                    
+            }
+
+          
+        </script>
+
+    </body>
+</html>
